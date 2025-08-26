@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome – Ramada by Wyndham Tukwila Southcenter</title>
+  <meta name="description" content="Guest welcome guide with amenity hours and services." />
+  <style>
+  :root {
+    --bg: #fafafa;
+    --fg: #111827;
+    --muted: #6b7280;
+    --brand: #c8102e;
+    --card: #ffffff;
+    --border: #e5e7eb;
+    --shadow: rgba(0,0,0,0.1);
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    background: var(--bg); color: var(--fg); line-height: 1.6;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; border-bottom: 3px solid var(--brand); }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .logo-img { display:block; height:75px; width:auto; }
+  h1 { font-size: clamp(24px, 2.5vw, 34px); margin: 0; color: var(--brand); font-weight:700; }
+  .sub { color: var(--muted); font-size: 15px; }
+  .lang { display: flex; gap: 10px; }
+  .lang button { border: 1px solid var(--border); background: #fff; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all .2s; }
+  .lang button:hover { background: var(--brand); color:#fff; }
+  .lang button.active { border-color: var(--brand); background:#fff; color: var(--brand); }
+
+  .welcome-box { background: linear-gradient(135deg,var(--brand),#a50e24); color:#fff; border-radius:18px; padding:26px; margin-top:24px; text-align:center; box-shadow:0 4px 14px var(--shadow); }
+  .welcome-box h2 { margin:0 0 10px; font-size:24px; font-weight:700; }
+  .welcome-box p { margin:6px 0; font-size:17px; }
+
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-top:24px; box-shadow:0 2px 8px var(--shadow); }
+  .card h2 { margin-top:0; font-size:20px; color:var(--brand); border-bottom:2px solid var(--border); padding-bottom:8px; }
+  .grid { display: grid; gap: 14px; }
+  @media (min-width: 640px) { .grid.cols-2 { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+  @media (min-width: 960px) { .grid.cols-3 { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+
+  .item { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 16px; display: grid; gap: 6px; transition: box-shadow 0.2s ease, transform .2s; }
+  .item:hover { box-shadow: 0 6px 16px var(--shadow); transform: translateY(-2px); }
+  .item h3 { margin: 0; font-size: 17px; color: var(--brand); font-weight:600; }
+  .muted { color: var(--muted); font-size: 14px; }
+
+  footer { color: var(--muted); font-size: 13px; padding: 28px 0 12px; text-align:center; border-top:1px solid var(--border); margin-top:30px; }
+  .btn { display: inline-flex; align-items: center; justify-content:center; gap: 8px; border: 1px solid var(--border); background: #fff; padding: 10px 14px; border-radius: 10px; text-decoration: none; color: var(--fg); font-weight: 600; transition:.2s; }
+  .btn:hover { background: var(--brand); color:#fff; border-color: var(--brand); }
+  .btn.primary { background: var(--brand); color: #fff; border-color: var(--brand); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <img src="https://1000logos.net/wp-content/uploads/2021/05/Ramada-logo.png" alt="Ramada by Wyndham Logo" class="logo-img">
+        <div>
+          <h1 id="title">Welcome to Ramada by Wyndham – Tukwila Southcenter</h1>
+          <div class="sub" id="subtitle">Your hotel guide for hours and services</div>
+        </div>
+      </div>
+      <div class="lang" role="tablist" aria-label="Language">
+        <button id="lang-en" class="active" role="tab" aria-selected="true">EN</button>
+        <button id="lang-es" role="tab" aria-selected="false">ES</button>
+      </div>
+    </header>
+
+    <div class="welcome-box" id="welcome-box">
+      <h2 id="welcome-title">Welcome Valued Guest</h2>
+      <p id="welcome-text">We truly appreciate you choosing to stay with us. Our team is dedicated to making your experience comfortable and memorable. Please find below the essential information about our amenities and services.</p>
+    </div>
+
+    <section class="card" aria-labelledby="hours-h">
+      <h2 id="hours-h">Amenity Hours</h2>
+      <div class="grid cols-2" id="hours-grid"></div>
+    </section>
+
+    <section class="card" aria-labelledby="contact-h">
+      <h2 id="contact-h">Contact & Location</h2>
+      <div class="grid cols-2">
+        <div class="item">
+          <h3 id="fd-title">Front Desk</h3>
+          <div class="muted" id="fd-desc">Dial 0 from your room phone</div>
+          <a class="btn" href="tel:+14252764445" id="fd-call">Call front desk</a>
+        </div>
+        <div class="item">
+          <h3 id="addr-title">Address</h3>
+          <div class="muted" id="addr-text">15901 W Valley Hwy, Tukwila, WA 98188</div>
+          <a class="btn" id="map-link" target="_blank" rel="noopener">Open in Maps</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div id="note-policy">Please observe posted rules at each facility. Hours subject to change.</div>
+      <div id="last-updated" aria-live="polite"></div>
+    </footer>
+  </div>
+
+  <script>
+    const CONFIG = {
+      hotelName: "Ramada by Wyndham – Tukwila Southcenter",
+      phone: "+1 425-276-4445",
+      address: "15901 W Valley Hwy, Tukwila, WA 98188",
+      mapsUrl: "https://maps.app.goo.gl/G2hHiX17ELVq3NUL6",
+      welcome: {
+        en: { title: "Welcome Valued Guest", text: "We truly appreciate you choosing to stay with us. Our team is dedicated to making your experience comfortable and memorable. Please find below the essential information about our amenities and services." },
+        es: { title: "Bienvenido huésped distinguido", text: "Agradecemos sinceramente que haya elegido hospedarse con nosotros. Nuestro equipo está dedicado a que su experiencia sea cómoda y memorable. A continuación encontrará la información esencial sobre nuestros servicios e instalaciones." }
+      },
+      hours: [
+        { key: "checkin", icon: "🛎️",
+          en: { name: "Check-In / Check-Out", hours: "Check-In 4:00 PM\nCheck-Out 12:00 PM", note: "Front desk can assist with early/late requests" },
+          es: { name: "Check-in / Check-out", hours: "Check-in 4:00 PM\nCheck-out 12:00 PM", note: "La recepción puede ayudar con solicitudes de llegada/salida" }
+        },
+        { key: "shuttle", icon: "🚌", 
+          en: { name: "Shuttle Service", hours: "Airport 5:30 AM – 11:30 PM\nMall 9:30 AM – 8:30 PM", note: "Shuttle runs every hour at :30 from the hotel" },
+          es: { name: "Servicio de traslado", hours: "Aeropuerto 5:30 AM – 11:30 PM\nCentro comercial 9:30 AM – 8:30 PM", note: "El traslado sale cada hora a y media desde el hotel" }
+        },
+        { key: "breakfast", icon: "🍳",
+          en: { name: "Complimentary Breakfast", hours: "Mon–Fri 6:00 AM – 9:30 AM\nSat–Sun 7:00 AM – 10:00 AM", note: "Seattle Room – Main Lobby" },
+          es: { name: "Desayuno de cortesía", hours: "Lun–Vie 6:00 AM – 9:30 AM\nSáb–Dom 7:00 AM – 10:00 AM", note: "Sala Seattle – Lobby principal" }
+        },
+        { key: "wifi", icon: "📶",
+          en: { name: "Wi-Fi", hours: "SSID: RamadaWifi", note: "Password is printed on your key card sleeve" },
+          es: { name: "Wi-Fi", hours: "SSID: RamadaWifi", note: "La contraseña está en la funda de su tarjeta de habitación" }
+        },
+        { key: "pool", icon: "🏊",
+          en: { name: "Swimming Pool", hours: "10:00 AM – 8:00 PM", note: "Near 2nd elevator – 1st floor" },
+          es: { name: "Piscina", hours: "10:00 AM – 8:00 PM", note: "Cerca del segundo ascensor – 1.º piso" }
+        },
+        { key: "fitness", icon: "💪",
+          en: { name: "Fitness Room", hours: "6:00 AM – 10:00 PM", note: "Near 2nd elevator – 1st floor" },
+          es: { name: "Gimnasio", hours: "6:00 AM – 10:00 PM", note: "Cerca del segundo ascensor – 1.º piso" }
+        },
+        { key: "laundry", icon: "🧺",
+          en: { name: "Guest Laundry", hours: "6:00 AM – 10:00 PM", note: "Near 2nd elevator – 1st floor" },
+          es: { name: "Lavandería", hours: "6:00 AM – 10:00 PM", note: "Cerca del segundo ascensor – 1.º piso" }
+        },
+        { key: "patio", icon: "🌿",
+          en: { name: "Patio / Backyard", hours: "6:00 AM – 8:00 PM", note: "Backyard garden" },
+          es: { name: "Patio / Jardín", hours: "6:00 AM – 8:00 PM", note: "Jardín trasero" }
+        }
+      ],
+      notices: {
+        en: "Please observe posted rules at each facility. Hours subject to change.",
+        es: "Respete las normas publicadas en cada instalación. Horarios sujetos a cambios."
+      }
+    };
+
+    const state = { lang: 'en' };
+    function $(sel){ return document.querySelector(sel); }
+    function el(tag, cls){ const n = document.createElement(tag); if(cls) n.className = cls; return n; }
+
+    function renderStatic(){
+      $('#title').textContent = state.lang==='en'? `Welcome to ${CONFIG.hotelName}` : `Bienvenido a ${CONFIG.hotelName}`;
+      $('#subtitle').textContent = state.lang==='en'? 'Your hotel guide for hours and services' : 'Guía en la propiedad para horarios y servicios';
+      $('#welcome-title').textContent = CONFIG.welcome[state.lang].title;
+      $('#welcome-text').textContent = CONFIG.welcome[state.lang].text;
+      $('#contact-h').textContent = state.lang==='en'? 'Contact & Location' : 'Contacto y ubicación';
+      $('#fd-title').textContent = state.lang==='en'? 'Front Desk' : 'Recepción';
+      $('#fd-desc').textContent = state.lang==='en'? 'Dial 0 from your room phone' : 'Marque 0 desde el teléfono de su habitación';
+      $('#fd-call').textContent = state.lang==='en'? 'Call front desk' : 'Llamar a recepción';
+      $('#fd-call').setAttribute('href', `tel:${CONFIG.phone}`);
+      $('#addr-title').textContent = state.lang==='en'? 'Address' : 'Dirección';
+      $('#addr-text').textContent = CONFIG.address;
+      const map = $('#map-link');
+      map.textContent = state.lang==='en'? 'Open in Maps' : 'Abrir en Mapas';
+      map.href = CONFIG.mapsUrl;
+      $('#note-policy').textContent = CONFIG.notices[state.lang];
+      $('#last-updated').textContent = `${state.lang==='en'?'Last updated':'Última actualización'}: ${new Date().toLocaleDateString()}`;
+
+      const grid = $('#hours-grid');
+      grid.innerHTML = '';
+      CONFIG.hours.forEach(h => {
+        const item = el('div','item');
+        const h3 = el('h3');
+        h3.textContent = `${h.icon} ${h[state.lang].name}`;
+        const hours = el('div','');
+        hours.innerText = h[state.lang].hours;
+        const note = el('div','muted'); note.textContent = h[state.lang].note;
+        item.append(h3, hours, note);
+        grid.appendChild(item);
+      });
+    }
+
+    document.getElementById('lang-en').addEventListener('click', () => { state.lang='en'; renderStatic(); });
+    document.getElementById('lang-es').addEventListener('click', () => { state.lang='es'; renderStatic(); });
+
+    renderStatic();
+  </script>
+</body>
+</html>
